@@ -4,7 +4,7 @@ import Login from "./pages/Login"
 import Dashboard from "./pages/Dashboard"
 import Layout from "./components/layout/Layout"
 
-// import ProductCatalog from "./features/products/pages/ProductCatalog"
+import ProductCatalog from "./features/products/pages/ProductCatalog"
 // import ManageProducts from "./features/products/pages/ManageProducts"
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
 
           <Route path="dashboard" element={<Dashboard />} />
 
-          {/* <Route path="product-catalog" element={<ProductCatalog />} /> */}
+          <Route path="product-catalog" element={<ProductCatalog />} />
 
           {/* <Route path="manage-products" element={<ManageProducts />} /> */}
 
