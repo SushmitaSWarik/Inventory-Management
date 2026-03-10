@@ -7,6 +7,9 @@ import Layout from "./components/layout/Layout"
 import ProductCatalog from "./features/products/pages/ProductCatalog"
 import ManageProducts from "./features/products/pages/ManageProducts"
 
+import ProductInventory from "./features/inventory/pages/ProductInventory"
+import RawInventory from "./features/inventory/pages/RawInventory"
+
 function App() {
   return (
     <BrowserRouter>
@@ -25,6 +28,10 @@ function App() {
 
           <Route path="manage-products" element={<ManageProducts />} />
 
+          <Route path="product-inventory" element={<ProductInventory />} />
+
+          <Route path="raw-inventory" element={<RawInventory />} />
+          
         </Route>
 
         {/* Optional redirect */}

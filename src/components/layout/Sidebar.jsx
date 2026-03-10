@@ -16,7 +16,8 @@ import {
 
 export default function Sidebar({ collapsed }) {
 
-  const [productOpen, setProductOpen] = useState(false)
+  // const [productOpen, setProductOpen] = useState(false)
+  const [openMenu, setOpenMenu] = useState(null)
 
   const menu = [
     { name: "Dashboard", icon: LayoutDashboard, path: "/dashboard" },
@@ -24,13 +25,23 @@ export default function Sidebar({ collapsed }) {
     {
       name: "Products",
       icon: Package,
+      key: "products",
       submenu: [
         { name: "Product Catalog", icon: Package, path: "/product-catalog" },
         { name: "Manage Products", icon: Boxes, path: "/manage-products" }
       ]
     },
 
-    { name: "Inventory", icon: Boxes, path: "/inventory" },
+    {
+      name: "Inventory",
+      icon: Boxes,
+      key: "inventory",
+      submenu: [
+        { name: "Product Inventory", icon: Package, path: "/product-inventory" },
+        { name: "Raw Inventory", icon: Boxes, path: "/raw-inventory" }
+      ]
+      // path: "/inventory"
+    },
     { name: "POS", icon: ShoppingCart, path: "/pos" },
     { name: "Users", icon: Users, path: "/users" },
     { name: "Stock Management", icon: Boxes, path: "/stock" },
@@ -94,7 +105,10 @@ export default function Sidebar({ collapsed }) {
                 {/* Parent menu */}
 
                 <div
-                  onClick={() => setProductOpen(!productOpen)}
+                  // onClick={() => setProductOpen(!productOpen)}
+                  onClick={() =>
+  setOpenMenu(openMenu === item.key ? null : item.key)
+}
                   className={`
                   flex items-center
                   px-3 lg:px-4
@@ -120,17 +134,19 @@ export default function Sidebar({ collapsed }) {
                   </div>
 
                   {!collapsed && (
-                    productOpen
-                      ? <ChevronUp size={16} />
-                      : <ChevronDown size={16} />
+                    // productOpen
+                    //   ? <ChevronUp size={16} />
+                    //   : <ChevronDown size={16} />
+                    openMenu === item.key
+  ? <ChevronUp size={16} />
+  : <ChevronDown size={16} />
                   )}
 
                 </div>
 
 
                 {/* Submenu */}
-
-                {productOpen && (
+                {openMenu === item.key && (
 
                   <div
                     className={`
