@@ -44,9 +44,15 @@ export default function StatCard({ title, value, icon: Icon, color }) {
         </div>
 
         {/* Icon Section */}
-        <div className={`p-2 sm:p-3 rounded-lg ${color} flex-shrink-0`}>
+        {/* <div className={`p-2 sm:p-3 rounded-lg ${color} flex-shrink-0`}>
           <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
-        </div>
+        </div> */}
+
+        {Icon && (
+  <div className={`p-2 sm:p-3 rounded-lg ${color} flex-shrink-0`}>
+    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+  </div>
+)}
 
       </CardContent>
 

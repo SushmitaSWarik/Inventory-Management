@@ -1,21 +1,229 @@
+// import { Input } from "@/components/ui/input"
+// import { Button } from "@/components/ui/button"
+
+// import {
+//   Search,
+//   Plus,
+//   Pencil,
+//   Trash2
+// } from "lucide-react"
+
+// const materials = [
+//   {
+//     name: "BLK RHS 100 * 50 * 2.00 MM 6.000",
+//     category: "BLK RHS 100 * 50 * 2.00MM 6.000",
+//     stock: 1040,
+//     status: "In Stock"
+//   },
+//   {
+//     name: "BLK RHS 60 * 40 * 2.00MM 6.000",
+//     category: "BLK RHS 60 * 40 * 2.00MM 6.000",
+//     stock: 101,
+//     status: "In Stock"
+//   }
+// ]
+
+// export default function RawInventory() {
+
+//   return (
+//     <div className="space-y-6">
+
+//       {/* Header */}
+
+//       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+
+//         <div>
+//           <h1 className="text-xl min-[426px]:text-2xl font-bold">
+//             Raw Inventory
+//           </h1>
+
+//           <p className="text-xs sm:text-sm text-gray-500">
+//             Manage raw materials and stock levels
+//           </p>
+//         </div>
+
+//         <Button className="flex items-center gap-2 w-full sm:w-auto">
+//           <Plus size={16} />
+//           Add Material
+//         </Button>
+
+//       </div>
+
+
+//       {/* Stats */}
+
+//       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+
+//         <div className="bg-white border rounded-lg p-4">
+//           <p className="text-xs text-gray-500">Total Materials</p>
+//           <p className="text-xl font-bold">2</p>
+//         </div>
+
+//         <div className="bg-white border rounded-lg p-4">
+//           <p className="text-xs text-gray-500">Low Stock Items</p>
+//           <p className="text-xl font-bold text-orange-500">0</p>
+//         </div>
+
+//         <div className="bg-white border rounded-lg p-4">
+//           <p className="text-xs text-gray-500">Out of Stock Items</p>
+//           <p className="text-xl font-bold text-red-500">0</p>
+//         </div>
+
+//         <div className="bg-white border rounded-lg p-4">
+//           <p className="text-xs text-gray-500">Total Units in Stock</p>
+//           <p className="text-xl font-bold text-green-600">1,141</p>
+//         </div>
+
+//       </div>
+
+
+//       {/* Search */}
+
+//       <div className="relative max-w-sm">
+
+//         <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+
+//         <Input
+//           placeholder="Search materials..."
+//           className="pl-8"
+//         />
+
+//       </div>
+
+
+//       {/* Stock Overview Table */}
+
+//       <div className="bg-white border rounded-xl shadow-sm">
+
+//         <div className="px-4 sm:px-6 py-4 border-b">
+
+//           <h2 className="font-semibold text-sm sm:text-base">
+//             Stock Overview
+//           </h2>
+
+//         </div>
+
+//         <div className="overflow-x-auto">
+
+//           <table className="min-w-[700px] w-full text-sm">
+
+//             <thead className="bg-gray-50">
+
+//               <tr className="text-left text-gray-500">
+
+//                 <th className="px-4 py-3">Material Name</th>
+//                 <th className="px-4 py-3">Category</th>
+//                 <th className="px-4 py-3">Current Stock</th>
+//                 <th className="px-4 py-3">Status</th>
+//                 <th className="px-4 py-3 text-center">Actions</th>
+
+//               </tr>
+
+//             </thead>
+
+//             <tbody>
+
+//               {materials.map((item, index) => (
+
+//                 <tr key={index} className="border-t">
+
+//                   <td className="px-4 py-3 font-medium">
+//                     {item.name}
+//                   </td>
+
+//                   <td className="px-4 py-3 text-gray-600">
+//                     {item.category}
+//                   </td>
+
+//                   <td className="px-4 py-3">
+
+//                     <div className="flex items-center gap-2">
+
+//                       <span className="font-medium">
+//                         {item.stock}
+//                       </span>
+
+//                       <span className="text-xs text-blue-500">
+//                         PIECES
+//                       </span>
+
+//                     </div>
+
+//                   </td>
+
+//                   <td className="px-4 py-3">
+
+//                     <span className="bg-green-100 text-green-600 px-2 py-1 rounded text-xs">
+//                       {item.status}
+//                     </span>
+
+//                   </td>
+
+//                   <td className="px-4 py-3">
+
+//                     <div className="flex items-center justify-center gap-3">
+
+//                       <Pencil className="w-4 h-4 cursor-pointer text-gray-600 hover:text-blue-500" />
+
+//                       <Trash2 className="w-4 h-4 cursor-pointer text-gray-600 hover:text-red-500" />
+
+//                     </div>
+
+//                   </td>
+
+//                 </tr>
+
+//               ))}
+
+//             </tbody>
+
+//           </table>
+
+//         </div>
+
+//       </div>
+
+//     </div>
+//   )
+// }
+
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+
+import StatCard from "@/components/dashboard/StatCard"
+
+import {
+  Table,
+  TableHeader,
+  TableHead,
+  TableRow,
+  TableBody,
+  TableCell
+} from "@/components/ui/table"
 
 import {
   Search,
   Plus,
   Pencil,
-  Trash2
+  Trash2,
+  Boxes,
+  AlertTriangle,
+  TrendingDown,
+  Package
 } from "lucide-react"
+import AddMaterialModal from "../components/AddMaterialModal"
+
 
 const materials = [
   {
+    id: 1,
     name: "BLK RHS 100 * 50 * 2.00 MM 6.000",
     category: "BLK RHS 100 * 50 * 2.00MM 6.000",
     stock: 1040,
     status: "In Stock"
   },
   {
+    id: 2,
     name: "BLK RHS 60 * 40 * 2.00MM 6.000",
     category: "BLK RHS 60 * 40 * 2.00MM 6.000",
     stock: 101,
@@ -26,6 +234,7 @@ const materials = [
 export default function RawInventory() {
 
   return (
+
     <div className="space-y-6">
 
       {/* Header */}
@@ -42,100 +251,125 @@ export default function RawInventory() {
           </p>
         </div>
 
-        <Button className="flex items-center gap-2 w-full sm:w-auto">
+        {/* <Button className="flex items-center gap-2 w-full sm:w-auto">
           <Plus size={16} />
           Add Material
-        </Button>
+        </Button> */}
+        <AddMaterialModal />  
 
       </div>
 
 
-      {/* Stats */}
+
+      {/* Stats Cards (Reusable Component) */}
 
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
 
-        <div className="bg-white border rounded-lg p-4">
-          <p className="text-xs text-gray-500">Total Materials</p>
-          <p className="text-xl font-bold">2</p>
-        </div>
+        <StatCard
+          title="Total Materials"
+          value="2"
+          // icon={Boxes}
+          color="bg-blue-100 text-blue-600"
+        />
 
-        <div className="bg-white border rounded-lg p-4">
-          <p className="text-xs text-gray-500">Low Stock Items</p>
-          <p className="text-xl font-bold text-orange-500">0</p>
-        </div>
+        <StatCard
+          title="Low Stock Items"
+          value="0"
+          // icon={AlertTriangle}
+          color="bg-orange-100 text-orange-600"
+        />
 
-        <div className="bg-white border rounded-lg p-4">
-          <p className="text-xs text-gray-500">Out of Stock Items</p>
-          <p className="text-xl font-bold text-red-500">0</p>
-        </div>
+        <StatCard
+          title="Out of Stock Items"
+          value="0"
+          // icon={TrendingDown}
+          color="bg-red-100 text-red-600"
+        />
 
-        <div className="bg-white border rounded-lg p-4">
-          <p className="text-xs text-gray-500">Total Units in Stock</p>
-          <p className="text-xl font-bold text-green-600">1,141</p>
-        </div>
-
-      </div>
-
-
-      {/* Search */}
-
-      <div className="relative max-w-sm">
-
-        <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-
-        <Input
-          placeholder="Search materials..."
-          className="pl-8"
+        <StatCard
+          title="Total Units in Stock"
+          value="1,141"
+          // icon={Package}
+          color="bg-green-100 text-green-600"
         />
 
       </div>
 
 
-      {/* Stock Overview Table */}
 
-      <div className="bg-white border rounded-xl shadow-sm">
+      {/* Main Card */}
 
-        <div className="px-4 sm:px-6 py-4 border-b">
+      <div className="bg-white border rounded-xl p-4 sm:p-5 md:p-6 space-y-4 shadow-sm">
 
-          <h2 className="font-semibold text-sm sm:text-base">
-            Stock Overview
-          </h2>
+        {/* Search */}
+
+        <div className="relative w-full sm:max-w-sm">
+
+          <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+
+          <Input
+            placeholder="Search materials..."
+            className="pl-9 text-xs sm:text-sm"
+          />
 
         </div>
 
+
+
+        {/* Table */}
+
         <div className="overflow-x-auto">
 
-          <table className="min-w-[700px] w-full text-sm">
+          <Table className="min-w-[700px]">
 
-            <thead className="bg-gray-50">
+            <TableHeader className="bg-gray-50">
 
-              <tr className="text-left text-gray-500">
+              <TableRow>
 
-                <th className="px-4 py-3">Material Name</th>
-                <th className="px-4 py-3">Category</th>
-                <th className="px-4 py-3">Current Stock</th>
-                <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3 text-center">Actions</th>
+                <TableHead className="text-xs sm:text-sm">
+                  Material Name
+                </TableHead>
 
-              </tr>
+                <TableHead className="text-xs sm:text-sm">
+                  Category
+                </TableHead>
 
-            </thead>
+                <TableHead className="text-xs sm:text-sm">
+                  Current Stock
+                </TableHead>
 
-            <tbody>
+                <TableHead className="text-xs sm:text-sm">
+                  Status
+                </TableHead>
 
-              {materials.map((item, index) => (
+                <TableHead className="text-xs sm:text-sm text-right">
+                  Actions
+                </TableHead>
 
-                <tr key={index} className="border-t">
+              </TableRow>
 
-                  <td className="px-4 py-3 font-medium">
+            </TableHeader>
+
+
+
+            <TableBody>
+
+              {materials.map((item) => (
+
+                <TableRow key={item.id}>
+
+                  <TableCell className="font-medium text-xs sm:text-sm">
                     {item.name}
-                  </td>
+                  </TableCell>
 
-                  <td className="px-4 py-3 text-gray-600">
+                  <TableCell className="text-xs sm:text-sm">
                     {item.category}
-                  </td>
+                  </TableCell>
 
-                  <td className="px-4 py-3">
+
+                  {/* Stock */}
+
+                  <TableCell className="text-xs sm:text-sm">
 
                     <div className="flex items-center gap-2">
 
@@ -143,46 +377,59 @@ export default function RawInventory() {
                         {item.stock}
                       </span>
 
-                      <span className="text-xs text-blue-500">
+                      <span className="text-[10px] sm:text-xs text-blue-500">
                         PIECES
                       </span>
 
                     </div>
 
-                  </td>
+                  </TableCell>
 
-                  <td className="px-4 py-3">
 
-                    <span className="bg-green-100 text-green-600 px-2 py-1 rounded text-xs">
+                  {/* Status */}
+
+                  <TableCell>
+
+                    <span className="bg-green-100 text-green-600 px-2 sm:px-3 py-1 rounded-md text-[10px] sm:text-xs font-medium">
                       {item.status}
                     </span>
 
-                  </td>
+                  </TableCell>
 
-                  <td className="px-4 py-3">
 
-                    <div className="flex items-center justify-center gap-3">
+                  {/* Actions */}
 
-                      <Pencil className="w-4 h-4 cursor-pointer text-gray-600 hover:text-blue-500" />
+                  <TableCell>
 
-                      <Trash2 className="w-4 h-4 cursor-pointer text-gray-600 hover:text-red-500" />
+                    <div className="flex justify-end gap-3">
+
+                      <Pencil
+                        size={16}
+                        className="text-gray-500 hover:text-blue-600 cursor-pointer"
+                      />
+
+                      <Trash2
+                        size={16}
+                        className="text-gray-500 hover:text-red-600 cursor-pointer"
+                      />
 
                     </div>
 
-                  </td>
+                  </TableCell>
 
-                </tr>
+                </TableRow>
 
               ))}
 
-            </tbody>
+            </TableBody>
 
-          </table>
+          </Table>
 
         </div>
 
       </div>
 
     </div>
+
   )
 }
