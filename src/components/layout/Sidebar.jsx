@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { NavLink } from "react-router-dom"
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 import {
   LayoutDashboard,
@@ -11,13 +11,12 @@ import {
   FileText,
   Settings,
   ChevronDown,
-  ChevronUp
-} from "lucide-react"
+  ChevronUp,
+} from "lucide-react";
 
 export default function Sidebar({ collapsed }) {
-
   // const [productOpen, setProductOpen] = useState(false)
-  const [openMenu, setOpenMenu] = useState(null)
+  const [openMenu, setOpenMenu] = useState(null);
 
   const menu = [
     { name: "Dashboard", icon: LayoutDashboard, path: "/dashboard" },
@@ -28,8 +27,8 @@ export default function Sidebar({ collapsed }) {
       key: "products",
       submenu: [
         { name: "Product Catalog", icon: Package, path: "/product-catalog" },
-        { name: "Manage Products", icon: Boxes, path: "/manage-products" }
-      ]
+        { name: "Manage Products", icon: Boxes, path: "/manage-products" },
+      ],
     },
 
     {
@@ -37,9 +36,13 @@ export default function Sidebar({ collapsed }) {
       icon: Boxes,
       key: "inventory",
       submenu: [
-        { name: "Product Inventory", icon: Package, path: "/product-inventory" },
-        { name: "Raw Inventory", icon: Boxes, path: "/raw-inventory" }
-      ]
+        {
+          name: "Product Inventory",
+          icon: Package,
+          path: "/product-inventory",
+        },
+        { name: "Raw Inventory", icon: Boxes, path: "/raw-inventory" },
+      ],
       // path: "/inventory"
     },
     { name: "POS", icon: ShoppingCart, path: "/pos" },
@@ -47,8 +50,8 @@ export default function Sidebar({ collapsed }) {
     { name: "Stock Management", icon: Boxes, path: "/stock" },
     { name: "Analytics", icon: BarChart, path: "/analytics" },
     { name: "Reports", icon: FileText, path: "/reports" },
-    { name: "Settings", icon: Settings, path: "/settings" }
-  ]
+    { name: "Settings", icon: Settings, path: "/settings" },
+  ];
 
   return (
     <div
@@ -66,7 +69,6 @@ export default function Sidebar({ collapsed }) {
       ${collapsed ? "w-14 md:w-16" : "w-52 lg:w-56 xl:w-64"}
       `}
     >
-
       {/* Logo */}
 
       <div
@@ -74,9 +76,7 @@ export default function Sidebar({ collapsed }) {
         ${collapsed ? "justify-center" : "gap-3"}
         `}
       >
-        <div className="text-yellow-400 font-bold text-lg lg:text-xl">
-          VM
-        </div>
+        <div className="text-yellow-400 font-bold text-lg lg:text-xl">VM</div>
 
         {!collapsed && (
           <div className="text-xs lg:text-sm font-semibold">
@@ -85,30 +85,24 @@ export default function Sidebar({ collapsed }) {
         )}
       </div>
 
-
       {/* Menu */}
 
       <div className="mt-4 flex flex-col gap-1">
-
         {menu.map((item, index) => {
-
-          const Icon = item.icon
+          const Icon = item.icon;
 
           /* PRODUCTS DROPDOWN */
 
           if (item.submenu) {
-
             return (
-
               <div key={index}>
-
                 {/* Parent menu */}
 
                 <div
                   // onClick={() => setProductOpen(!productOpen)}
                   onClick={() =>
-  setOpenMenu(openMenu === item.key ? null : item.key)
-}
+                    setOpenMenu(openMenu === item.key ? null : item.key)
+                  }
                   className={`
                   flex items-center
                   px-3 lg:px-4
@@ -120,47 +114,37 @@ export default function Sidebar({ collapsed }) {
                   ${collapsed ? "justify-center" : "justify-between"}
                   `}
                 >
-
                   <div className="flex items-center gap-3">
-
                     <Icon size={18} />
 
                     {!collapsed && (
-                      <span className="text-xs lg:text-sm">
-                        {item.name}
-                      </span>
+                      <span className="text-xs lg:text-sm">{item.name}</span>
                     )}
-
                   </div>
 
-                  {!collapsed && (
+                  {!collapsed &&
                     // productOpen
                     //   ? <ChevronUp size={16} />
                     //   : <ChevronDown size={16} />
-                    openMenu === item.key
-  ? <ChevronUp size={16} />
-  : <ChevronDown size={16} />
-                  )}
-
+                    (openMenu === item.key ? (
+                      <ChevronUp size={16} />
+                    ) : (
+                      <ChevronDown size={16} />
+                    ))}
                 </div>
-
 
                 {/* Submenu */}
                 {openMenu === item.key && (
-
                   <div
                     className={`
                     flex flex-col gap-1
                     ${collapsed ? "items-center mt-1" : "ml-8 mt-1"}
                     `}
                   >
-
                     {item.submenu.map((sub, i) => {
-
-                      const SubIcon = sub.icon
+                      const SubIcon = sub.icon;
 
                       return (
-
                         <NavLink
                           key={i}
                           to={sub.path}
@@ -179,32 +163,21 @@ export default function Sidebar({ collapsed }) {
                             `
                           }
                         >
-
                           <SubIcon size={16} />
 
                           {!collapsed && sub.name}
-
                         </NavLink>
-
-                      )
-
+                      );
                     })}
-
                   </div>
-
                 )}
-
               </div>
-
-            )
-
+            );
           }
-
 
           /* NORMAL MENU ITEMS */
 
           return (
-
             <NavLink
               key={index}
               to={item.path}
@@ -225,23 +198,15 @@ export default function Sidebar({ collapsed }) {
                 `
               }
             >
-
               <Icon size={18} />
 
               {!collapsed && (
-                <span className="text-xs lg:text-sm">
-                  {item.name}
-                </span>
+                <span className="text-xs lg:text-sm">{item.name}</span>
               )}
-
             </NavLink>
-
-          )
-
+          );
         })}
-
       </div>
-
 
       {/* Footer */}
 
@@ -250,7 +215,6 @@ export default function Sidebar({ collapsed }) {
           © 2020 Vasantha Metal Industry
         </div>
       )}
-
     </div>
-  )
+  );
 }

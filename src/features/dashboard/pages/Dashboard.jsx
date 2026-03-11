@@ -1,5 +1,7 @@
-import StatCard from "@/components/dashboard/StatCard"
-import RecentOrders from "@/components/dashboard/RecentOrders"
+// import RecentOrders from "@/components/dashboard/RecentOrders"
+import StatCard from "@/components/common/StatCard"
+import RecentOrders from "../components/RecentOrders"
+
 
 import {
     Package,
@@ -13,15 +15,6 @@ export default function Dashboard() {
 
     return (
         <div className="space-y-6">
-
-            {/* <div>
-        <h1 className="text-2xl font-bold">Dashboard</h1>
-
-        <p className="text-gray-500">
-          Welcome back! Here's what's happening with your inventory.
-        </p>
-      </div> */}
-
 
             <div>
                 <h1 className="text-xl min-[426px]:text-2xl font-bold m-0">

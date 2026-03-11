@@ -11,6 +11,9 @@ import {
 
 import { Search, Download, Filter } from "lucide-react"
 
+// added reusble table wrapper comp
+import DataTable from "@/components/common/DataTable"
+
 export default function ProductCatalog() {
 
   const products = [
@@ -98,9 +101,10 @@ export default function ProductCatalog() {
 
         {/* Table */}
 
-        <div className="overflow-x-auto">
+        {/* <div className="overflow-x-auto">
 
-          <Table className="min-w-[600px]">
+          <Table className="min-w-[600px]"> */}
+        <DataTable width="min-w-[600px]">
 
             <TableHeader>
 
@@ -155,9 +159,66 @@ export default function ProductCatalog() {
 
             </TableBody>
 
-          </Table>
+          {/* </Table>
 
-        </div>
+        </div> */}
+          </DataTable>
+
+
+        {/* <DataTable width="min-w-[600px]">
+
+  <TableHeader>
+    <TableRow>
+
+      <TableHead className="text-xs sm:text-sm">
+        Sl No.
+      </TableHead>
+
+      <TableHead className="text-xs sm:text-sm">
+        Product Name
+      </TableHead>
+
+      <TableHead className="text-xs sm:text-sm">
+        Category
+      </TableHead>
+
+      <TableHead className="text-xs sm:text-sm">
+        Price
+      </TableHead>
+
+    </TableRow>
+  </TableHeader>
+
+
+  <TableBody>
+
+    {products.map((product) => (
+
+      <TableRow key={product.id}>
+
+        <TableCell className="text-xs sm:text-sm">
+          {product.id}
+        </TableCell>
+
+        <TableCell className="font-medium text-xs sm:text-sm">
+          {product.name}
+        </TableCell>
+
+        <TableCell className="text-xs sm:text-sm">
+          {product.category}
+        </TableCell>
+
+        <TableCell className="text-xs sm:text-sm">
+          {product.price}
+        </TableCell>
+
+      </TableRow>
+
+    ))}
+
+  </TableBody>
+
+</DataTable> */}
 
       </div>
 

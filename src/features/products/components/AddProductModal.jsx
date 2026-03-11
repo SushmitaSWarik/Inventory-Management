@@ -1,12 +1,4 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-  DialogTrigger
-} from "@/components/ui/dialog"
+import AppModal from "@/components/common/AppModal"
 
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -18,115 +10,101 @@ export default function AddProductModal() {
 
   return (
 
-    <Dialog>
+    <AppModal
+      title="Add Product"
+      description="Add a new product to your inventory."
+      width="sm:max-w-[650px]"
 
-      <DialogTrigger asChild>
-
+      trigger={
         <Button className="flex items-center gap-2 w-full sm:w-auto text-xs sm:text-sm">
           <Plus size={16} />
           Add Product
         </Button>
+      }
+    >
 
-      </DialogTrigger>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
 
+        {/* LEFT COLUMN */}
 
-          <DialogContent className="w-[95vw] sm:max-w-[650px]">
-          {/* <DialogContent className="w-[95vw] sm:max-w-[650px] max-h-[90vh] overflow-y-auto"> */}
+        <div className="space-y-4">
 
-        <DialogHeader>
+          <h3 className="text-sm font-semibold text-gray-600">
+            Basic Details
+          </h3>
 
-          <DialogTitle>Add Product</DialogTitle>
+          <div className="space-y-1">
+            <Label>Name</Label>
+            <Input placeholder="Product name" />
+          </div>
 
-          <DialogDescription>
-            Add a new product to your inventory.
-          </DialogDescription>
+          <div className="space-y-1">
+            <Label>Category</Label>
 
-        </DialogHeader>
+            <select className="w-full border rounded-md p-2 text-sm">
+              <option>Select Category</option>
+              <option>Pipes</option>
+              <option>Sheets</option>
+            </select>
 
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+          <div className="space-y-1">
+            <Label>Unit of Measurement</Label>
 
-
-          {/* LEFT COLUMN */}
-
-          <div className="space-y-4">
-
-            <h3 className="text-sm font-semibold text-gray-600">
-              Basic Details
-            </h3>
-
-            <div className="space-y-1">
-              <Label>Name</Label>
-              <Input placeholder="Product name" />
-            </div>
-
-            <div className="space-y-1">
-              <Label>Category</Label>
-              <select className="w-full border rounded-md p-2 text-sm">
-                <option>Select Category</option>
-                <option>Pipes</option>
-                <option>Sheets</option>
-              </select>
-            </div>
-
-            <div className="space-y-1">
-              <Label>Unit of Measurement</Label>
-              <select className="w-full border rounded-md p-2 text-sm">
-                <option>Pieces (pcs)</option>
-                <option>Kilograms (kg)</option>
-              </select>
-            </div>
-
-
-            <div className="grid grid-cols-2 gap-4">
-
-              <div className="space-y-1">
-                <Label>Stock</Label>
-                <Input type="number" />
-              </div>
-
-              <div className="space-y-1">
-                <Label>Price (per unit)</Label>
-                <Input type="number" />
-              </div>
-
-            </div>
+            <select className="w-full border rounded-md p-2 text-sm">
+              <option>Pieces (pcs)</option>
+              <option>Kilograms (kg)</option>
+            </select>
 
           </div>
 
 
-          {/* RIGHT COLUMN */}
+          <div className="grid grid-cols-2 gap-4">
 
-          <div className="space-y-4">
+            <div className="space-y-1">
+              <Label>Stock</Label>
+              <Input type="number" />
+            </div>
 
-            <h3 className="text-sm font-semibold text-gray-600">
-              Category Specific Fields
-            </h3>
-
-            <p className="text-xs text-gray-500">
-              Please select a category first
-            </p>
+            <div className="space-y-1">
+              <Label>Price (per unit)</Label>
+              <Input type="number" />
+            </div>
 
           </div>
 
         </div>
 
 
-        <DialogFooter className="pt-6">
+        {/* RIGHT COLUMN */}
 
-          <Button className="ml-auto">
-            Save changes
-          </Button>
+        <div className="space-y-4">
 
-        </DialogFooter>
+          <h3 className="text-sm font-semibold text-gray-600">
+            Category Specific Fields
+          </h3>
 
-      </DialogContent>
+          <p className="text-xs text-gray-500">
+            Please select a category first
+          </p>
 
-    </Dialog>
+        </div>
+
+      </div>
+
+
+      <div className="pt-6 flex justify-end">
+
+        <Button>
+          Save changes
+        </Button>
+
+      </div>
+
+    </AppModal>
 
   )
 }
-
-
 
 

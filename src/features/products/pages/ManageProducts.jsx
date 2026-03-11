@@ -20,6 +20,9 @@ import {
 import AddProductModal from "../components/AddProductModal"
 import AddCategoryModal from "../components/AddCategoryModal"
 
+// reusbkle table comp
+import DataTable from "@/components/common/DataTable"
+
 export default function ManageProducts() {
 
   const products = [
@@ -149,9 +152,10 @@ export default function ManageProducts() {
 
         {/* Table */}
 
-        <div className="overflow-x-auto">
+        {/* <div className="overflow-x-auto">
 
-          <Table className="min-w-[800px]">
+          <Table className="min-w-[800px]"> */}
+        <DataTable width="min-w-[800px]">
 
             <TableHeader>
 
@@ -247,9 +251,10 @@ export default function ManageProducts() {
 
             </TableBody>
 
-          </Table>
+          {/* </Table>
 
-        </div>
+        </div> */}
+          </DataTable>
 
       </div>
 

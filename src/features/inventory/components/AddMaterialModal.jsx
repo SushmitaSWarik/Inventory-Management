@@ -1,143 +1,79 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger
-} from "@/components/ui/dialog"
-
-import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Plus } from "lucide-react"
 
-import { Plus, X } from "lucide-react"
+import AppModal from "@/components/common/AppModal"
 
 export default function AddMaterialModal() {
 
   return (
 
-    <Dialog>
+    <AppModal
+      title="Add New Raw Materials"
+      width="sm:max-w-[650px]"
 
-      {/* Trigger Button */}
-
-      <DialogTrigger asChild>
-
+      trigger={
         <Button className="flex items-center gap-2 w-full sm:w-auto text-xs sm:text-sm">
           <Plus size={16} />
           Add Material
         </Button>
+      }
+    >
 
-      </DialogTrigger>
+      {/* FORM */}
 
+      <div className="space-y-4 pt-2">
 
-      {/* Modal */}
-
-      <DialogContent className="w-[95vw] sm:max-w-[650px] max-h-[90vh] overflow-y-auto">
-
-        <DialogHeader>
-
-          <div className="flex items-center justify-between">
-
-            <DialogTitle className="text-base sm:text-lg">
-              Add New Raw Materials
-            </DialogTitle>
-
-          </div>
-
-        </DialogHeader>
+        <div className="space-y-1">
+          <Label>Material Category</Label>
+          <Input placeholder="e.g. Metals, Plastics, Chemicals" />
+        </div>
 
 
-
-        {/* FORM */}
-
-        <div className="space-y-4 pt-2">
-
-
-          {/* Material Category */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
           <div className="space-y-1">
-
-            <Label>Material Category</Label>
-
-            <Input placeholder="e.g. Metals, Plastics, Chemicals" />
-
+            <Label>Material Name</Label>
+            <Input placeholder="e.g. MS Rod 10mm" />
           </div>
-
-
-          {/* Name + Unit */}
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-            <div className="space-y-1">
-
-              <Label>Material Name</Label>
-
-              <Input placeholder="e.g. MS Rod 10mm" />
-
-            </div>
-
-
-            <div className="space-y-1">
-
-              <Label>Unit</Label>
-
-              <select className="w-full border rounded-md p-2 text-sm">
-
-                <option>Pieces (pcs)</option>
-                <option>Kilograms (kg)</option>
-                <option>Litres (ltr)</option>
-
-              </select>
-
-            </div>
-
-          </div>
-
-
-
-          {/* Quantity */}
 
           <div className="space-y-1">
+            <Label>Unit</Label>
 
-            <Label>Initial Stock Quantity</Label>
-
-            <Input type="number" placeholder="0" />
-
-          </div>
-
-
-
-          {/* Specifications */}
-
-          <div className="flex items-center justify-between">
-
-            <Label>Other Specifications (Optional)</Label>
-
-            <Button
-              variant="outline"
-              size="sm"
-              className="text-xs"
-            >
-              + Add Specification
-            </Button>
+            <select className="w-full border rounded-md p-2 text-sm">
+              <option>Pieces (pcs)</option>
+              <option>Kilograms (kg)</option>
+              <option>Litres (ltr)</option>
+            </select>
 
           </div>
-
-
-
-          {/* Save Button */}
-
-          <Button className="w-full mt-2">
-
-            Save Materials
-
-          </Button>
-
 
         </div>
 
-      </DialogContent>
 
-    </Dialog>
+        <div className="space-y-1">
+          <Label>Initial Stock Quantity</Label>
+          <Input type="number" placeholder="0" />
+        </div>
+
+
+        <div className="flex items-center justify-between">
+          <Label>Other Specifications (Optional)</Label>
+
+          <Button variant="outline" size="sm" className="text-xs">
+            + Add Specification
+          </Button>
+
+        </div>
+
+
+        <Button className="w-full mt-2">
+          Save Materials
+        </Button>
+
+      </div>
+
+    </AppModal>
   )
 }
