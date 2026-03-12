@@ -26,9 +26,10 @@ const orders = [
   },
 ];
 // reubale tab;le wrapper
-import DataTable from "@/components/common/DataTable";
+// import DataTable from "@/components/common/DataTable";
+import DataTable from "./common/DataTable";
 
-export default function RecentOrders() {
+export default function RecentOrdersTable() {
   const [showTable, setShowTable] = useState(false);
 
   return (

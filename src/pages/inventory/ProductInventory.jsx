@@ -1,17 +1,15 @@
-import StatCard from "@/components/common/StatCard"
+import StatCard from "@/components/common/StatCard";
 
 import {
   Package,
   CheckCircle,
   AlertTriangle,
-  TrendingDown
-} from "lucide-react"
+  TrendingDown,
+} from "lucide-react";
 
 export default function ProductInventory() {
-
   return (
     <div className="space-y-6">
-
       {/* Page Title */}
 
       <div>
@@ -24,11 +22,9 @@ export default function ProductInventory() {
         </p>
       </div>
 
-
       {/* Stat Cards */}
 
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-
         <StatCard
           title="Total Products"
           value="3"
@@ -56,57 +52,41 @@ export default function ProductInventory() {
           icon={TrendingDown}
           color="bg-red-100 text-red-600"
         />
-
       </div>
-
 
       {/* Alerts Section */}
 
       <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
-
         {/* Low Stock Alerts */}
 
         <div className="bg-white border rounded-xl shadow-sm p-4 sm:p-6">
-
           <div className="flex items-center gap-2 mb-3">
-
             <AlertTriangle className="text-yellow-500 w-4 h-4 sm:w-5 sm:h-5" />
 
             <h2 className="text-sm sm:text-base font-semibold">
               Low Stock Alerts
             </h2>
-
           </div>
 
-          <p className="text-xs sm:text-sm text-gray-500">
-            No low stock items
-          </p>
-
+          <p className="text-xs sm:text-sm text-gray-500">No low stock items</p>
         </div>
-
 
         {/* Out of Stock Alerts */}
 
         <div className="bg-white border rounded-xl shadow-sm p-4 sm:p-6">
-
           <div className="flex items-center gap-2 mb-3">
-
             <TrendingDown className="text-red-500 w-4 h-4 sm:w-5 sm:h-5" />
 
             <h2 className="text-sm sm:text-base font-semibold">
               Out of Stock Alerts
             </h2>
-
           </div>
 
           <p className="text-xs sm:text-sm text-gray-500">
             No out of stock items
           </p>
-
         </div>
-
       </div>
-
     </div>
-  )
+  );
 }

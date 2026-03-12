@@ -43,9 +43,40 @@ export default function Sidebar({ collapsed }) {
         },
         { name: "Raw Inventory", icon: Boxes, path: "/raw-inventory" },
       ],
-      // path: "/inventory"
     },
-    { name: "POS", icon: ShoppingCart, path: "/pos" },
+
+    {
+      name: "POS",
+      icon: ShoppingCart,
+      key: "pos",
+      submenu: [
+        {
+          name: "Create Order",
+          icon: Package,
+          path: "/create-order"
+        },
+        {
+          name: "Create Advance Order",
+          icon: Boxes,
+          path: "/create-advance-order",
+        },
+        {
+          name: "Orders",
+          icon: Boxes,
+          path: "/orders",
+        },
+        {
+          name: "Pending Orders",
+          icon: Boxes,
+          path: "/pending-orders",
+        },
+        {
+          name: "Purchase Orders",
+          icon: Boxes,
+          path: "/purchase-orders",
+        },
+      ],
+    },
     { name: "Users", icon: Users, path: "/users" },
     { name: "Stock Management", icon: Boxes, path: "/stock" },
     { name: "Analytics", icon: BarChart, path: "/analytics" },

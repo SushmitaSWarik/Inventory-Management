@@ -1,27 +1,28 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import Login from "./pages/Login"
-import Dashboard from "./features/dashboard/pages/Dashboard"
-import Layout from "./components/layout/Layout"
+import Login from "./pages/Login";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Layout from "./components/layout/Layout";
 
-import ProductCatalog from "./features/products/pages/ProductCatalog"
-import ManageProducts from "./features/products/pages/ManageProducts"
+import ProductCatalog from "./pages/product/ProductCatalog";
+import ManageProducts from "./pages/product/ManageProducts";
 
-import ProductInventory from "./features/inventory/pages/ProductInventory"
-import RawInventory from "./features/inventory/pages/RawInventory"
+import ProductInventory from "./pages/inventory/ProductInventory";
+import RawInventory from "./pages/inventory/RawInventory";
+
+import CreateOrder from "./pages/pos/create_order/CreateOrder";
+import CreateAdvanceOrder from "./pages/pos/CreateAdvanceOrder";
+import Orders from "./pages/pos/Orders";
 
 function App() {
   return (
     <BrowserRouter>
-
       <Routes>
-
         {/* Login */}
         <Route path="/" element={<Login />} />
 
         {/* Dashboard Layout */}
         <Route path="/" element={<Layout />}>
-
           <Route path="dashboard" element={<Dashboard />} />
 
           <Route path="product-catalog" element={<ProductCatalog />} />
@@ -31,16 +32,21 @@ function App() {
           <Route path="product-inventory" element={<ProductInventory />} />
 
           <Route path="raw-inventory" element={<RawInventory />} />
+
+          <Route path="create-order" element={<CreateOrder />} />
+
+          <Route path="/create-advance-order" element={<CreateAdvanceOrder />} />
+
+          <Route path="/orders" element={<Orders />} />
+
           
         </Route>
 
         {/* Optional redirect */}
         <Route path="*" element={<Navigate to="/dashboard" />} />
-
       </Routes>
-
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
