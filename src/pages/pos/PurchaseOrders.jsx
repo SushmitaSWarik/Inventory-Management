@@ -1,7 +1,8 @@
-import PurchaseOrdersTable from "@/components/PurchaseOrdersTable";
 import { Input } from "@/components/ui/input";
+import { Search, Plus } from "lucide-react";
 
-import { Search, Plus} from "lucide-react";
+import PurchaseOrdersTable from "@/components/PurchaseOrdersTable";
+import PurchaseOrderModal from "@/components/PurchaseOrderModal";
 
 export default function PurchaseOrders() {
   const purchaseOrders = [
@@ -28,6 +29,7 @@ export default function PurchaseOrders() {
     },
   ];
 
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -41,10 +43,8 @@ export default function PurchaseOrders() {
           </p>
         </div>
 
-        <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-md text-xs sm:text-sm hover:bg-blue-700">
-          <Plus size={16} />
-          Create PO
-        </button>
+        {/* Create PO button - Modal */}
+        <PurchaseOrderModal/>
       </div>
 
       {/* Stats */}
@@ -84,8 +84,9 @@ export default function PurchaseOrders() {
         </h2>
 
         {/* Table - Purchase Order Table component */}
-        <PurchaseOrdersTable purchaseOrders={purchaseOrders}/>
+        <PurchaseOrdersTable purchaseOrders={purchaseOrders} />
       </div>
+
     </div>
   );
 }
