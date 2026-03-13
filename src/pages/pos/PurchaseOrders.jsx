@@ -29,7 +29,6 @@ export default function PurchaseOrders() {
     },
   ];
 
-
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -44,7 +43,7 @@ export default function PurchaseOrders() {
         </div>
 
         {/* Create PO button - Modal */}
-        <PurchaseOrderModal/>
+        <PurchaseOrderModal />
       </div>
 
       {/* Stats */}
@@ -62,18 +61,16 @@ export default function PurchaseOrders() {
 
       {/* Search */}
 
-      <div className="bg-white border rounded-xl p-4">
-        <div className="relative w-full sm:max-w-sm">
-          <Search
-            size={16}
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-          />
+      <div className="relative w-full sm:max-w-sm">
+        <Search
+          size={16}
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+        />
 
-          <Input
-            placeholder="Search POs..."
-            className="pl-9 text-xs sm:text-sm"
-          />
-        </div>
+        <Input
+          placeholder="Search POs..."
+          className="pl-9 text-xs sm:text-sm"
+        />
       </div>
 
       {/* Table Card */}
@@ -86,7 +83,6 @@ export default function PurchaseOrders() {
         {/* Table - Purchase Order Table component */}
         <PurchaseOrdersTable purchaseOrders={purchaseOrders} />
       </div>
-
     </div>
   );
 }

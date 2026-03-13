@@ -16,6 +16,8 @@ import Orders from "./pages/pos/Orders";
 import PendingOrders from "./pages/pos/PendingOrders";
 import PurchaseOrders from "./pages/pos/PurchaseOrders";
 
+import Suppliers from "./pages/users/Suppliers";
+
 function App() {
   return (
     <BrowserRouter>
@@ -37,7 +39,10 @@ function App() {
 
           <Route path="create-order" element={<CreateOrder />} />
 
-          <Route path="/create-advance-order" element={<CreateAdvanceOrder />} />
+          <Route
+            path="/create-advance-order"
+            element={<CreateAdvanceOrder />}
+          />
 
           <Route path="/orders" element={<Orders />} />
 
@@ -45,7 +50,8 @@ function App() {
 
           <Route path="/purchase-orders" element={<PurchaseOrders />} />
 
-          
+          <Route path="/suppliers" element={<Suppliers />} />
+
         </Route>
 
         {/* Optional redirect */}

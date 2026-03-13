@@ -53,7 +53,7 @@ export default function Sidebar({ collapsed }) {
         {
           name: "Create Order",
           icon: Package,
-          path: "/create-order"
+          path: "/create-order",
         },
         {
           name: "Create Advance Order",
@@ -77,7 +77,29 @@ export default function Sidebar({ collapsed }) {
         },
       ],
     },
-    { name: "Users", icon: Users, path: "/users" },
+    
+    {
+      name: "Users",
+      icon: Users,
+      key: "users",
+      submenu: [
+        {
+          name: "Suppliers",
+          icon: Package,
+          path: "/suppliers",
+        },
+        {
+          name: "Customer",
+          icon: Package,
+          path: "/customer",
+        },
+        {
+          name: "Create Admin",
+          icon: Package,
+          path: "/create-admin",
+        },
+      ],
+    },
     { name: "Stock Management", icon: Boxes, path: "/stock" },
     { name: "Analytics", icon: BarChart, path: "/analytics" },
     { name: "Reports", icon: FileText, path: "/reports" },

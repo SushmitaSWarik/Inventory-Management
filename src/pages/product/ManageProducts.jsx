@@ -2,17 +2,12 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 import { Search, Filter, Plus } from "lucide-react";
-// import AddProductModal from "../components/AddProductModal"; -->import
-// import AddCategoryModal from "../components/AddCategoryModal"; --->import
+
 import Prod_AddCategoryModal from "@/components/Prod_AddCategoryModal";
 import Prod_AddProductModal from "@/components/Prod_AddProductModal";
-// import AddCategoryModal from "@/features/products/components/AddCategoryModal"; delete
-// import AddProductModal from "@/features/products/components/AddProductModal"; delete
 import { ManageProductTable } from "@/components/ManageProductTable";
 
-
 export default function ManageProducts() {
-
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -52,9 +47,8 @@ export default function ManageProducts() {
   <Plus size={16} />
   Add Category
 </Button> */}
-                  {/* <AddCategoryModal /> */}
-                  <Prod_AddCategoryModal/>
-          
+          {/* <AddCategoryModal /> */}
+          <Prod_AddCategoryModal />
 
           {/* <Button
   className="flex items-center gap-2 w-full sm:w-auto text-xs sm:text-sm"
@@ -62,8 +56,8 @@ export default function ManageProducts() {
   <Plus size={16} />
   Add Product
 </Button> */}
-                  {/* <AddProductModal /> */}
-                  <Prod_AddProductModal/>
+          {/* <AddProductModal /> */}
+          <Prod_AddProductModal />
         </div>
       </div>
 
@@ -97,8 +91,6 @@ export default function ManageProducts() {
 
         {/* Table  - ManageProductTable component*/}
         <ManageProductTable />
-              
-
       </div>
     </div>
   );
