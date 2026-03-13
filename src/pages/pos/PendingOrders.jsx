@@ -1,6 +1,7 @@
 import { Input } from "@/components/ui/input";
 
 import { Search, Filter } from "lucide-react";
+
 import PendingOrdersTable from "@/components/PendingOrdersTable";
 
 export default function PendingOrders() {

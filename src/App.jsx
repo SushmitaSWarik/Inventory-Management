@@ -14,6 +14,7 @@ import CreateOrder from "./pages/pos/create_order/CreateOrder";
 import CreateAdvanceOrder from "./pages/pos/CreateAdvanceOrder";
 import Orders from "./pages/pos/Orders";
 import PendingOrders from "./pages/pos/PendingOrders";
+import PurchaseOrders from "./pages/pos/PurchaseOrders";
 
 function App() {
   return (
@@ -41,6 +42,8 @@ function App() {
           <Route path="/orders" element={<Orders />} />
 
           <Route path="/pending-orders" element={<PendingOrders />} />
+
+          <Route path="/purchase-orders" element={<PurchaseOrders />} />
 
           
         </Route>

@@ -93,8 +93,7 @@ export default function PendingOrdersTable({ orders }) {
               <TableCell className="px-4 sm:px-6 py-2 sm:py-3 text-right">
                 {/* Actions */}
                 <div className="flex justify-end gap-3">
-                        
-                   {/* Edit */}
+                  {/* Edit */}
                   <Pencil
                     size={16}
                     className="text-blue-600 cursor-pointer hover:text-blue-800"
