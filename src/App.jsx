@@ -17,6 +17,7 @@ import PendingOrders from "./pages/pos/PendingOrders";
 import PurchaseOrders from "./pages/pos/PurchaseOrders";
 
 import Suppliers from "./pages/users/Suppliers";
+import Customers from "./pages/users/Customers";
 
 function App() {
   return (
@@ -39,10 +40,7 @@ function App() {
 
           <Route path="create-order" element={<CreateOrder />} />
 
-          <Route
-            path="/create-advance-order"
-            element={<CreateAdvanceOrder />}
-          />
+          <Route path="/create-advance-order" element={<CreateAdvanceOrder />} />
 
           <Route path="/orders" element={<Orders />} />
 
@@ -52,6 +50,7 @@ function App() {
 
           <Route path="/suppliers" element={<Suppliers />} />
 
+          <Route path="/customers" element={<Customers />} />
         </Route>
 
         {/* Optional redirect */}

@@ -89,9 +89,9 @@ export default function Sidebar({ collapsed }) {
           path: "/suppliers",
         },
         {
-          name: "Customer",
+          name: "Customers",
           icon: Package,
-          path: "/customer",
+          path: "/customers",
         },
         {
           name: "Create Admin",
