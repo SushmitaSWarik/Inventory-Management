@@ -1,15 +1,7 @@
 import DeliveredOrdersTable from "@/components/DeliveredOrdersTable";
 import { Input } from "@/components/ui/input";
-import {
-  Table,
-  TableHeader,
-  TableHead,
-  TableRow,
-  TableBody,
-  TableCell,
-} from "@/components/ui/table";
 
-import { Search, Filter, Download } from "lucide-react";
+import { Search, Filter} from "lucide-react";
 
 export default function Orders() {
   const orders = [

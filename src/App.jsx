@@ -13,6 +13,7 @@ import RawInventory from "./pages/inventory/RawInventory";
 import CreateOrder from "./pages/pos/create_order/CreateOrder";
 import CreateAdvanceOrder from "./pages/pos/CreateAdvanceOrder";
 import Orders from "./pages/pos/Orders";
+import PendingOrders from "./pages/pos/PendingOrders";
 
 function App() {
   return (
@@ -38,6 +39,8 @@ function App() {
           <Route path="/create-advance-order" element={<CreateAdvanceOrder />} />
 
           <Route path="/orders" element={<Orders />} />
+
+          <Route path="/pending-orders" element={<PendingOrders />} />
 
           
         </Route>
