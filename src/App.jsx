@@ -44,10 +44,7 @@ function App() {
 
           <Route path="create-order" element={<CreateOrder />} />
 
-          <Route
-            path="/create-advance-order"
-            element={<CreateAdvanceOrder />}
-          />
+          <Route path="/create-advance-order" element={<CreateAdvanceOrder />} />
 
           <Route path="/orders" element={<Orders />} />
 
