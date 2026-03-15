@@ -19,7 +19,9 @@ import PurchaseOrders from "./pages/pos/PurchaseOrders";
 import Suppliers from "./pages/users/Suppliers";
 import Customers from "./pages/users/Customers";
 import CreateAdmin from "./pages/users/CreateAdmin";
+
 import StockManagement from "./pages/stock_management/StockManagement";
+import Settings from "./pages/settings/Settings";
 
 function App() {
   return (
@@ -59,7 +61,9 @@ function App() {
 
           <Route path="/create-admin" element={<CreateAdmin />} />
 
-          {/* <Route path="/stock" element={<StockManagement />} /> */}
+          <Route path="/stock" element={<StockManagement />} />
+
+          <Route path="/settings" element={<Settings />} />
         </Route>
 
         {/* Optional redirect */}
