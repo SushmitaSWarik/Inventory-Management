@@ -23,7 +23,7 @@ import CreateAdmin from "./pages/users/CreateAdmin";
 
 import StockManagement from "./pages/stock_management/StockManagement";
 import Settings from "./pages/settings/Settings";
-import Analytics from "./pages/analytics/analytics";
+import Analytics from "./pages/analytics/Analytics";
 
 function App() {
   return (
