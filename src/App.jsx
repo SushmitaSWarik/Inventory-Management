@@ -21,7 +21,8 @@ import Customers from "./pages/users/Customers";
 import CreateAdmin from "./pages/users/CreateAdmin";
 
 import StockManagement from "./pages/stock_management/StockManagement";
-// import Settings from "./pages/settings/Settings";
+import Settings from "./pages/settings/Settings";
+// import Analytics from "./pages/analytics/analytics";
 
 function App() {
   return (
@@ -44,7 +45,10 @@ function App() {
 
           <Route path="create-order" element={<CreateOrder />} />
 
-          <Route path="/create-advance-order" element={<CreateAdvanceOrder />} />
+          <Route
+            path="/create-advance-order"
+            element={<CreateAdvanceOrder />}
+          />
 
           <Route path="/orders" element={<Orders />} />
 
@@ -60,7 +64,9 @@ function App() {
 
           <Route path="/stock" element={<StockManagement />} />
 
-          {/* <Route path="/settings" element={<Settings />} /> */}
+          <Route path="/settings" element={<Settings />} />
+
+          {/* <Route path="/analytics" element={<Analytics />} /> */}
         </Route>
 
         {/* Optional redirect */}
