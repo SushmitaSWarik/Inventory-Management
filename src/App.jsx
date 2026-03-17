@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import ErrorBoundary from "./components/common/ErrorBoundary";
 
 import Login from "./pages/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -22,57 +23,59 @@ import CreateAdmin from "./pages/users/CreateAdmin";
 
 import StockManagement from "./pages/stock_management/StockManagement";
 import Settings from "./pages/settings/Settings";
-// import Analytics from "./pages/analytics/analytics";
+import Analytics from "./pages/analytics/analytics";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Login */}
-        <Route path="/" element={<Login />} />
+    <ErrorBoundary>
+      <BrowserRouter>
+        <Routes>
+          {/* Login */}
+          <Route path="/" element={<Login />} />
 
-        {/* Dashboard Layout */}
-        <Route path="/" element={<Layout />}>
-          <Route path="dashboard" element={<Dashboard />} />
+          {/* Dashboard Layout */}
+          <Route path="/" element={<Layout />}>
+            <Route path="dashboard" element={<Dashboard />} />
 
-          <Route path="product-catalog" element={<ProductCatalog />} />
+            <Route path="product-catalog" element={<ProductCatalog />} />
 
-          <Route path="manage-products" element={<ManageProducts />} />
+            <Route path="manage-products" element={<ManageProducts />} />
 
-          <Route path="product-inventory" element={<ProductInventory />} />
+            <Route path="product-inventory" element={<ProductInventory />} />
 
-          <Route path="raw-inventory" element={<RawInventory />} />
+            <Route path="raw-inventory" element={<RawInventory />} />
 
-          <Route path="create-order" element={<CreateOrder />} />
+            <Route path="create-order" element={<CreateOrder />} />
 
-          <Route
-            path="/create-advance-order"
-            element={<CreateAdvanceOrder />}
-          />
+            <Route
+              path="/create-advance-order"
+              element={<CreateAdvanceOrder />}
+            />
 
-          <Route path="/orders" element={<Orders />} />
+            <Route path="/orders" element={<Orders />} />
 
-          <Route path="/pending-orders" element={<PendingOrders />} />
+            <Route path="/pending-orders" element={<PendingOrders />} />
 
-          <Route path="/purchase-orders" element={<PurchaseOrders />} />
+            <Route path="/purchase-orders" element={<PurchaseOrders />} />
 
-          <Route path="/suppliers" element={<Suppliers />} />
+            <Route path="/suppliers" element={<Suppliers />} />
 
-          <Route path="/customers" element={<Customers />} />
+            <Route path="/customers" element={<Customers />} />
 
-          <Route path="/create-admin" element={<CreateAdmin />} />
+            <Route path="/create-admin" element={<CreateAdmin />} />
 
-          <Route path="/stock" element={<StockManagement />} />
+            <Route path="/stock" element={<StockManagement />} />
 
-          <Route path="/settings" element={<Settings />} />
+            <Route path="/settings" element={<Settings />} />
 
-          {/* <Route path="/analytics" element={<Analytics />} /> */}
-        </Route>
+            <Route path="/analytics" element={<Analytics />} />
+          </Route>
 
-        {/* Optional redirect */}
-        <Route path="*" element={<Navigate to="/dashboard" />} />
-      </Routes>
-    </BrowserRouter>
+          {/* Optional redirect */}
+          <Route path="*" element={<Navigate to="/dashboard" />} />
+        </Routes>
+      </BrowserRouter>
+    </ErrorBoundary>
   );
 }
 

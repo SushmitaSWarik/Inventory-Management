@@ -1,7 +1,7 @@
-// import RecentOrders from "@/components/dashboard/RecentOrders"
 import StatCard from "@/components/common/StatCard";
-// import RecentOrders from "../components/RecentOrders";
 import RecentOrdersTable from "@/components/RecentOrdersTable";
+
+import ErrorBoundary from "@/components/common/ErrorBoundary";
 
 import {
   Package,
@@ -61,7 +61,9 @@ export default function Dashboard() {
         />
       </div>
 
-      <RecentOrdersTable />
+      <ErrorBoundary>
+        <RecentOrdersTable />
+      </ErrorBoundary>
     </div>
   );
 }

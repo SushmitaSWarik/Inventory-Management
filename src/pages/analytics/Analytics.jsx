@@ -1,74 +1,93 @@
-// import { Button } from "@/components/ui/button";
-// import {
-//   Calendar,
-//   Download,
-//   IndianRupee,
-//   ShoppingCart,
-//   Box,
-//   Users,
-// } from "lucide-react";
-// import StatCard from "@/components/common/StatCard";
+import AnalyticsCard from "@/components/AnalyticsCard";
+import RevenueCharts from "@/components/RevenueCharts";
+import CategoryChart from "@/components/CategoryChart";
 
-// export default function Analytics() {
-//   return (
-//     <div className="space-y-6">
-//       {/* Header */}
-//       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-//         <div>
-//           <h2 className="text-sm sm:text-base font-semibold">Analytics</h2>
-//           <p className="text-xs text-gray-500">
-//             Track performance metrics and business insights
-//           </p>
-//         </div>
+import ErrorBoundary from "@/components/common/ErrorBoundary";
 
-//         {/* Right Controls */}
-//         <div className="flex gap-2">
-//           <Button variant="outline" className="text-xs sm:text-sm flex gap-2">
-//             <Calendar size={14} />
-//             This Year
-//           </Button>
+import { IndianRupee, ShoppingCart, Package, Users } from "lucide-react";
 
-//           <Button className="bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm flex gap-2">
-//             <Download size={14} />
-//             Export
-//           </Button>
-//         </div>
-//       </div>
+export default function Analytics() {
+  return (
+    <div className="space-y-6">
+      {/* Header + Cards */}
+      <div className="space-y-6">
+        {/* Header */}
+        
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+          <div>
+            <h1 className="text-xl sm:text-2xl font-bold">Analytics</h1>
+            <p className="text-xs sm:text-sm text-gray-500">
+              Track performance metrics and business insights
+            </p>
+          </div>
 
-//       {/* Stats Grid */}
-//       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-//         <StatCard
-//           title="Total Revenue"
-//           value="₹532.00"
-//           icon={IndianRupee}
-//           color="bg-blue-100 text-blue-600"
-//           growth="+100%"
-//         />
+          <div className="flex gap-2">
+            <button className="border px-3 py-1.5 rounded-md text-sm">
+              This Year
+            </button>
+            <button className="bg-blue-600 text-white px-3 py-1.5 rounded-md text-sm">
+              Export
+            </button>
+          </div>
+        </div>
 
-//         <StatCard
-//           title="Total Orders"
-//           value="2"
-//           icon={ShoppingCart}
-//           color="bg-purple-100 text-purple-600"
-//           growth="+100%"
-//         />
+        {/* Cards */}
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <AnalyticsCard
+            title="Total Revenue"
+            value="₹532.00"
+            icon={IndianRupee}
+            growth="+100%"
+          />
+          <AnalyticsCard
+            title="Total Orders"
+            value="2"
+            icon={ShoppingCart}
+            growth="+100%"
+          />
+          <AnalyticsCard
+            title="Products Sold"
+            value="5"
+            icon={Package}
+            growth="+100%"
+          />
+          <AnalyticsCard
+            title="New Customers"
+            value="1"
+            icon={Users}
+            growth="+100%"
+          />
+        </div>
+      </div>
 
-//         <StatCard
-//           title="Products Sold"
-//           value="5"
-//           icon={Box}
-//           color="bg-orange-100 text-orange-600"
-//           growth="+100%"
-//         />
+      {/* Charts Section*/}
+      <ErrorBoundary>
+        <div className="grid gap-4 grid-cols-1 lg:grid-cols-3">
+          <div className="lg:col-span-2 bg-white border rounded-xl p-5 shadow-sm">
+            <h2 className="text-sm font-semibold text-gray-800">
+              Revenue Trend
+            </h2>
+            <p className="text-xs text-gray-500 mb-4">
+              Sales growth performance over time
+            </p>
 
-//         <StatCard
-//           title="New Customers"
-//           value="1"
-//           icon={Users}
-//           color="bg-green-100 text-green-600"
-//           growth="+100%"
-//         />
-//       </div>
-//     </div>
-//   );
-// }
+            {/* Revenue Chart component - Line chart */}
+            <RevenueCharts />
+          </div>
+
+          <div className="bg-white border rounded-xl p-5 shadow-sm">
+            <h2 className="text-sm font-semibold text-gray-800">
+              Sales by Category
+            </h2>
+            <p className="text-xs text-gray-500 mb-4">
+              Product category distribution
+            </p>
+            {/* Category Chart component - Donut chart */}
+            <CategoryChart />
+          </div>
+        </div>
+      </ErrorBoundary>
+
+    </div>
+  );
+}
