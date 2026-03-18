@@ -2,6 +2,9 @@ import AnalyticsCard from "@/components/AnalyticsCard";
 import RevenueCharts from "@/components/RevenueCharts";
 import CategoryChart from "@/components/CategoryChart";
 
+import OrderTrendsChart from "@/components/OrderTrendsChart";
+import TopProducts from "@/components/TopProducts";
+
 import ErrorBoundary from "@/components/common/ErrorBoundary";
 
 import { IndianRupee, ShoppingCart, Package, Users } from "lucide-react";
@@ -12,7 +15,7 @@ export default function Analytics() {
       {/* Header + Cards */}
       <div className="space-y-6">
         {/* Header */}
-        
+
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
           <div>
             <h1 className="text-xl sm:text-2xl font-bold">Analytics</h1>
@@ -88,6 +91,35 @@ export default function Analytics() {
         </div>
       </ErrorBoundary>
 
+      <ErrorBoundary>
+        <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
+          {/* LEFT - Order Trends */}
+          <div className="bg-white border rounded-xl p-5 shadow-sm">
+            <h2 className="text-sm font-semibold text-gray-800">
+              Order Trends
+            </h2>
+            <p className="text-xs text-gray-500 mb-4">
+              Monthly order volume fluctuation
+            </p>
+
+            {/* <OrderTrendsChart /> */}
+            <OrderTrendsChart />
+          </div>
+
+          {/* RIGHT - Top Products */}
+          <div className="bg-white border rounded-xl p-5 shadow-sm">
+            <h2 className="text-sm font-semibold text-gray-800">
+              Top Performing Products
+            </h2>
+            <p className="text-xs text-gray-500 mb-4">
+              Best selling products this period
+            </p>
+
+            {/* <TopProducts /> */}
+            <TopProducts />
+          </div>
+        </div>
+      </ErrorBoundary>
     </div>
   );
 }

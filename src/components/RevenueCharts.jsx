@@ -16,7 +16,7 @@ const data = [
   { month: "Mar", revenue: 532 },
 ];
 
-// CUSTOMIZED TOOLTIP
+// Tooltip
 function CustomTooltip({ active, payload, label }) {
   if (active && payload && payload.length) {
     return (

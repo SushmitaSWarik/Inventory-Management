@@ -4,32 +4,33 @@ import Header from "./Header"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Outlet } from "react-router-dom"
 
-
 // export default function Layout2({ children }) {
 export default function Layout() {
+  // const [collapsed, setCollapsed] = useState(window.innerWidth < 1024);
 
-  const [collapsed, setCollapsed] = useState(window.innerWidth < 1024)
+  // added
+  const [collapsed, setCollapsed] = useState(window.innerWidth < 1024);
+  const [mobileOpen, setMobileOpen] = useState(false); // ✅ NEW
 
   const toggleSidebar = () => {
-    setCollapsed(!collapsed)
-  }
+    setCollapsed(!collapsed);
+  };
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1024) {
-        setCollapsed(true)
+        setCollapsed(true);
       }
-    }
+    };
 
-    window.addEventListener("resize", handleResize)
+    window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     // <div className="flex h-screen bg-gray-100 relative">
     <div className="flex h-screen bg-gray-100 relative overflow-hidden">
-
       {/* Sidebar */}
       <Sidebar collapsed={collapsed} />
       {/* <Sidebar collapsed={collapsed} /> */}
@@ -56,16 +57,15 @@ export default function Layout() {
           ${collapsed ? "left-12 sm:left-14 md:left-16" : "left-52 sm:left-56 lg:left-56 xl:left-64"}
         `}
       >
-         {/* ${collapsed ? "left-16 sm:left-20" : "left-64 lg:left-56"} */}
-        {collapsed ? <ChevronRight size={14}/> : <ChevronLeft size={14}/>}
+        {/* ${collapsed ? "left-16 sm:left-20" : "left-64 lg:left-56"} */}
+        {collapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
       </button>
 
       {/* Main Content */}
       {/* <div className="flex flex-col flex-1"> */}
-        {/* <div className="flex flex-col flex-1 ml-12 sm:ml-14 md:ml-16 lg:ml-0"> */}
-        {/* <div className="flex flex-col flex-1 min-w-0"> */}
-        <div className="flex flex-col flex-1 min-w-0 ml-14 md:ml-16 lg:ml-0">
-
+      {/* <div className="flex flex-col flex-1 ml-12 sm:ml-14 md:ml-16 lg:ml-0"> */}
+      {/* <div className="flex flex-col flex-1 min-w-0"> */}
+      <div className="flex flex-col flex-1 min-w-0 ml-14 md:ml-16 lg:ml-0">
         <Header />
 
         {/* <main className="p-4 lg:p-6 overflow-y-auto flex-1"> */}
@@ -73,11 +73,8 @@ export default function Layout() {
           {/* {children} */}
           <Outlet />
         </main>
-
       </div>
-
     </div>
-  )
+  );
 }
-
 

@@ -22,8 +22,8 @@ import Customers from "./pages/users/Customers";
 import CreateAdmin from "./pages/users/CreateAdmin";
 
 import StockManagement from "./pages/stock_management/StockManagement";
-import Settings from "./pages/settings/Settings";
 import Analytics from "./pages/analytics/Analytics";
+import Settings from "./pages/settings/Settings";
 
 function App() {
   return (
@@ -47,10 +47,7 @@ function App() {
 
             <Route path="create-order" element={<CreateOrder />} />
 
-            <Route
-              path="/create-advance-order"
-              element={<CreateAdvanceOrder />}
-            />
+            <Route path="/create-advance-order" element={<CreateAdvanceOrder />} />
 
             <Route path="/orders" element={<Orders />} />
 

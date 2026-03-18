@@ -77,7 +77,7 @@ export default function Sidebar({ collapsed }) {
         },
       ],
     },
-    
+
     {
       name: "Users",
       icon: Users,
