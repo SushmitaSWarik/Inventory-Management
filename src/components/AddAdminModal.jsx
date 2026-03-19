@@ -114,7 +114,12 @@ export default function AddAdminModal({ onAddAdmin }) {
 
         <div className="flex justify-end pt-2">
           <DialogClose asChild>
-            <Button onClick={handleSubmit}>Create Admin</Button>
+            <Button
+              onClick={handleSubmit}
+              className="bg-blue-600 text-white hover:bg-blue-700"
+            >
+              Create Admin
+            </Button>
           </DialogClose>
         </div>
       </div>

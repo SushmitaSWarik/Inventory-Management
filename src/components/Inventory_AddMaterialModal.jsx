@@ -11,7 +11,7 @@ export default function Inventory_AddMaterialModal() {
       title="Add New Raw Materials"
       width="sm:max-w-[650px]"
       trigger={
-        <Button className="flex items-center gap-2 w-full sm:w-auto text-xs sm:text-sm">
+        <Button className="flex items-center bg-blue-600 text-white hover:bg-blue-700 gap-2 w-full sm:w-auto text-xs sm:text-sm">
           <Plus size={16} />
           Add Material
         </Button>
@@ -55,7 +55,9 @@ export default function Inventory_AddMaterialModal() {
           </Button>
         </div>
 
-        <Button className="w-full mt-2">Save Materials</Button>
+        <Button className="w-full mt-2 bg-blue-600 text-white hover:bg-blue-700">
+          Save Materials
+        </Button>
       </div>
     </AppModal>
   );

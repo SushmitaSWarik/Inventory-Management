@@ -31,7 +31,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* Login */}
-          <Route path="/" element={<Login />} />
+          {/* <Route path="/" element={<Login />} /> */}
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<Login />} />
 
           {/* Dashboard Layout */}
           <Route path="/" element={<Layout />}>
@@ -47,25 +49,25 @@ function App() {
 
             <Route path="create-order" element={<CreateOrder />} />
 
-            <Route path="/create-advance-order" element={<CreateAdvanceOrder />} />
+            <Route path="create-advance-order" element={<CreateAdvanceOrder />} />
 
-            <Route path="/orders" element={<Orders />} />
+            <Route path="orders" element={<Orders />} />
 
-            <Route path="/pending-orders" element={<PendingOrders />} />
+            <Route path="pending-orders" element={<PendingOrders />} />
 
-            <Route path="/purchase-orders" element={<PurchaseOrders />} />
+            <Route path="purchase-orders" element={<PurchaseOrders />} />
 
-            <Route path="/suppliers" element={<Suppliers />} />
+            <Route path="suppliers" element={<Suppliers />} />
 
-            <Route path="/customers" element={<Customers />} />
+            <Route path="customers" element={<Customers />} />
 
-            <Route path="/create-admin" element={<CreateAdmin />} />
+            <Route path="create-admin" element={<CreateAdmin />} />
 
-            <Route path="/stock" element={<StockManagement />} />
+            <Route path="stock" element={<StockManagement />} />
 
-            <Route path="/settings" element={<Settings />} />
+            <Route path="settings" element={<Settings />} />
 
-            <Route path="/analytics" element={<Analytics />} />
+            <Route path="analytics" element={<Analytics />} />
           </Route>
 
           {/* Optional redirect */}

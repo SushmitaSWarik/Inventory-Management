@@ -1,7 +1,14 @@
 import { Input } from "@/components/ui/input";
 import { Search, LogOut, Menu } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Header({ setMobileOpen }) {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/login");
+  };
+  
   return (
     <div className="flex items-center justify-between bg-white border-b px-3 sm:px-4 py-3 gap-2">
       {/* LEFT */}
@@ -34,7 +41,11 @@ export default function Header({ setMobileOpen }) {
           R
         </div>
 
-        <LogOut className="w-5 h-5 text-gray-600 hover:text-red-500 cursor-pointer" />
+        {/* <LogOut className="w-5 h-5 text-gray-600 hover:text-red-500 cursor-pointer" /> */}
+        <LogOut
+          className="w-5 h-5 text-gray-600 hover:text-red-500 cursor-pointer"
+          onClick={handleLogout}
+        />
       </div>
     </div>
   );

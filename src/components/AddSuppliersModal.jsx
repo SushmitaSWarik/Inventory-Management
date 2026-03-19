@@ -97,7 +97,12 @@ export default function AddSuppliersModal({ onAddSupplier }) {
         <div className="flex justify-end pt-3">
           {/* <Button onClick={handleSubmit}>Save Supplier</Button> */}
           <DialogClose asChild>
-            <Button onClick={handleSubmit}>Save Supplier</Button>
+            <Button
+              onClick={handleSubmit}
+              className="bg-blue-600 text-white hover:bg-blue-700"
+            >
+              Save Supplier
+            </Button>
           </DialogClose>
         </div>
       </div>

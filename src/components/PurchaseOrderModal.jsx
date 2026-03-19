@@ -79,7 +79,9 @@ export default function PurchaseOrderModal() {
         <div className="flex items-center justify-between pt-4">
           <p className="text-sm font-semibold">Grand Total: ₹0</p>
 
-          <Button>Confirm Order</Button>
+          <Button className="bg-blue-600 text-white hover:bg-blue-700">
+            Confirm Order
+          </Button>
         </div>
       </div>
     </AppModal>

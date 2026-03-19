@@ -13,7 +13,7 @@ export default function Prod_AddProductModal() {
       description="Add a new product to your inventory."
       width="sm:max-w-[650px]"
       trigger={
-        <Button className="flex items-center gap-2 w-full sm:w-auto text-xs sm:text-sm">
+        <Button className="flex items-center bg-blue-600 text-white hover:bg-blue-700 gap-2 w-full sm:w-auto text-xs sm:text-sm">
           <Plus size={16} />
           Add Product
         </Button>
