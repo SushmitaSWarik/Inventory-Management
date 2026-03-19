@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-
 import {
   LayoutDashboard,
   Package,
@@ -12,11 +11,14 @@ import {
   Settings,
   ChevronDown,
   ChevronUp,
+  X,
 } from "lucide-react";
 
-export default function Sidebar({ collapsed }) {
-  // const [productOpen, setProductOpen] = useState(false)
+export default function Sidebar({ collapsed, mobileOpen, setMobileOpen, setCollapsed }) {
   const [openMenu, setOpenMenu] = useState(null);
+
+  const isMobileView = mobileOpen;
+  const isCollapsed = isMobileView ? false : collapsed;
 
   const menu = [
     { name: "Dashboard", icon: LayoutDashboard, path: "/dashboard" },
@@ -50,31 +52,15 @@ export default function Sidebar({ collapsed }) {
       icon: ShoppingCart,
       key: "pos",
       submenu: [
-        {
-          name: "Create Order",
-          icon: Package,
-          path: "/create-order",
-        },
+        { name: "Create Order", icon: Package, path: "/create-order" },
         {
           name: "Create Advance Order",
           icon: Boxes,
           path: "/create-advance-order",
         },
-        {
-          name: "Orders",
-          icon: Boxes,
-          path: "/orders",
-        },
-        {
-          name: "Pending Orders",
-          icon: Boxes,
-          path: "/pending-orders",
-        },
-        {
-          name: "Purchase Orders",
-          icon: Boxes,
-          path: "/purchase-orders",
-        },
+        { name: "Orders", icon: Boxes, path: "/orders" },
+        { name: "Pending Orders", icon: Boxes, path: "/pending-orders" },
+        { name: "Purchase Orders", icon: Boxes, path: "/purchase-orders" },
       ],
     },
 
@@ -83,191 +69,167 @@ export default function Sidebar({ collapsed }) {
       icon: Users,
       key: "users",
       submenu: [
-        {
-          name: "Suppliers",
-          icon: Package,
-          path: "/suppliers",
-        },
-        {
-          name: "Customers",
-          icon: Package,
-          path: "/customers",
-        },
-        {
-          name: "Create Admin",
-          icon: Package,
-          path: "/create-admin",
-        },
+        { name: "Suppliers", icon: Package, path: "/suppliers" },
+        { name: "Customers", icon: Package, path: "/customers" },
+        { name: "Create Admin", icon: Package, path: "/create-admin" },
       ],
     },
+
     { name: "Stock Management", icon: Boxes, path: "/stock" },
     { name: "Analytics", icon: BarChart, path: "/analytics" },
-    { name: "Reports", icon: FileText, path: "/reports" },
+    // { name: "Reports", icon: FileText, path: "/reports" }, 
     { name: "Settings", icon: Settings, path: "/settings" },
   ];
 
   return (
-    <div
-      className={`
-      bg-[#0B1B2B]
-      text-white
-      flex
-      flex-col
-      h-screen
-      fixed lg:relative
-      z-40
-      transition-all
-      duration-300
-      ease-in-out
-      ${collapsed ? "w-14 md:w-16" : "w-52 lg:w-56 xl:w-64"}
-      `}
-    >
-      {/* Logo */}
+    <>
+      {/* Overlay */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 z-30 lg:hidden"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
 
       <div
-        className={`flex items-center border-b border-slate-700 p-6
-        ${collapsed ? "justify-center" : "gap-3"}
+        className={`
+        bg-[#0B1B2B] text-white flex flex-col h-screen z-40
+        transition-all duration-300 ease-in-out
+
+        ${isCollapsed ? "w-16" : "w-56 xl:w-64"}
+
+        fixed top-0 left-0
+        transform ${mobileOpen ? "translate-x-0" : "-translate-x-full"}
+
+        lg:translate-x-0 lg:relative
         `}
       >
-        <div className="text-yellow-400 font-bold text-lg lg:text-xl">VM</div>
+        {/* Header */}
+        <div className="flex items-center justify-between border-b border-slate-700 p-4">
+          <div className="flex items-center gap-2">
+            <div className="text-yellow-400 font-bold">VM</div>
 
-        {!collapsed && (
-          <div className="text-xs lg:text-sm font-semibold">
-            Vasanth Metal Industry
+            {!isCollapsed && (
+              <span className="text-sm font-semibold">
+                Vasanth Metal Industry
+              </span>
+            )}
+          </div>
+
+          {/* Close (mobile only) */}
+          <X
+            className="w-5 h-5 cursor-pointer lg:hidden"
+            onClick={() => setMobileOpen(false)}
+          />
+        </div>
+
+        {/* Menu */}
+        <div className="mt-4 flex flex-col gap-1 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent hover:scrollbar-thumb-slate-500">
+          {menu.map((item, index) => {
+            const Icon = item.icon;
+
+            if (item.submenu) {
+              return (
+                <div key={index}>
+                  {/* Parent */}
+                  <div
+                    // onClick={() =>
+                    //   setOpenMenu(openMenu === item.key ? null : item.key)
+                    // }
+
+                    //added- when collapsed(icons visibile)and clicked on submenu icon-->sidebar expands
+                    onClick={() => {
+                      if (isCollapsed) {
+                        //  expand sidebar first
+                        setCollapsed(false);
+
+                        // then open submenu
+                        setOpenMenu(item.key);
+                      } else {
+                        // normal toggle
+                        setOpenMenu(openMenu === item.key ? null : item.key);
+                      }
+                    }}
+                    className={`flex items-center px-3 py-3 mx-2 rounded-lg cursor-pointer hover:bg-[#13283f] ${
+                      isCollapsed ? "justify-center" : "justify-between"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <Icon size={18} />
+                      {!isCollapsed && (
+                        <span className="text-xs lg:text-sm">{item.name}</span> //added text-xs lg:text-sm
+                      )}
+                    </div>
+
+                    {!isCollapsed &&
+                      (openMenu === item.key ? (
+                        <ChevronUp size={16} />
+                      ) : (
+                        <ChevronDown size={16} />
+                      ))}
+                  </div>
+
+                  {/* Submenu */}
+                  {openMenu === item.key && !isCollapsed && (
+                    <div className="ml-8 mt-1 flex flex-col gap-1">
+                      {item.submenu.map((sub, i) => {
+                        const SubIcon = sub.icon;
+
+                        return (
+                          <NavLink
+                            key={i}
+                            to={sub.path}
+                            onClick={() => setMobileOpen(false)}
+                            className={({ isActive }) =>
+                              `flex items-center gap-2 px-3 py-2 rounded-lg text-xs lg:text-sm ${
+                                isActive
+                                  ? "bg-[#13283f] text-blue-400"
+                                  : "text-gray-300 hover:bg-[#13283f]"
+                              }`
+                            }
+                          >
+                            <SubIcon size={16} />
+                            {sub.name}
+                          </NavLink>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            return (
+              <NavLink
+                key={index}
+                to={item.path}
+                onClick={() => setMobileOpen(false)}
+                className={({ isActive }) =>
+                  `flex items-center px-3 py-3 mx-2 rounded-lg ${
+                    isCollapsed ? "justify-center" : "gap-3"
+                  } ${
+                    isActive
+                      ? "bg-[#13283f] text-blue-400"
+                      : "text-gray-300 hover:bg-[#13283f]"
+                  }`
+                }
+              >
+                <Icon size={18} />
+                {!isCollapsed && (
+                  <span className="text-xs lg:text-sm">{item.name}</span>
+                )}
+              </NavLink>
+            );
+          })}
+        </div>
+
+        {/* Footer */}
+        {!isCollapsed && (
+          <div className="mt-auto p-4 text-xs text-gray-400 border-t border-slate-700">
+            © 2020 Vasantha Metal Industry
           </div>
         )}
       </div>
-
-      {/* Menu */}
-
-      <div className="mt-4 flex flex-col gap-1">
-        {menu.map((item, index) => {
-          const Icon = item.icon;
-
-          /* PRODUCTS DROPDOWN */
-
-          if (item.submenu) {
-            return (
-              <div key={index}>
-                {/* Parent menu */}
-
-                <div
-                  // onClick={() => setProductOpen(!productOpen)}
-                  onClick={() =>
-                    setOpenMenu(openMenu === item.key ? null : item.key)
-                  }
-                  className={`
-                  flex items-center
-                  px-3 lg:px-4
-                  py-2 lg:py-3
-                  cursor-pointer
-                  hover:bg-[#13283f]
-                  rounded-lg
-                  mx-2
-                  ${collapsed ? "justify-center" : "justify-between"}
-                  `}
-                >
-                  <div className="flex items-center gap-3">
-                    <Icon size={18} />
-
-                    {!collapsed && (
-                      <span className="text-xs lg:text-sm">{item.name}</span>
-                    )}
-                  </div>
-
-                  {!collapsed &&
-                    // productOpen
-                    //   ? <ChevronUp size={16} />
-                    //   : <ChevronDown size={16} />
-                    (openMenu === item.key ? (
-                      <ChevronUp size={16} />
-                    ) : (
-                      <ChevronDown size={16} />
-                    ))}
-                </div>
-
-                {/* Submenu */}
-                {openMenu === item.key && (
-                  <div
-                    className={`
-                    flex flex-col gap-1
-                    ${collapsed ? "items-center mt-1" : "ml-8 mt-1"}
-                    `}
-                  >
-                    {item.submenu.map((sub, i) => {
-                      const SubIcon = sub.icon;
-
-                      return (
-                        <NavLink
-                          key={i}
-                          to={sub.path}
-                          className={({ isActive }) =>
-                            `
-                            flex items-center
-                            ${collapsed ? "justify-center p-2" : "gap-2 px-3 py-2"}
-                            rounded-lg
-                            text-xs lg:text-sm
-                            transition
-                            ${
-                              isActive
-                                ? "bg-[#13283f] text-blue-400"
-                                : "text-gray-300 hover:bg-[#13283f]"
-                            }
-                            `
-                          }
-                        >
-                          <SubIcon size={16} />
-
-                          {!collapsed && sub.name}
-                        </NavLink>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            );
-          }
-
-          /* NORMAL MENU ITEMS */
-
-          return (
-            <NavLink
-              key={index}
-              to={item.path}
-              className={({ isActive }) =>
-                `
-                flex items-center
-                px-3 lg:px-4
-                py-2 lg:py-3
-                rounded-lg
-                mx-2
-                transition
-                ${collapsed ? "justify-center" : "gap-3"}
-                ${
-                  isActive
-                    ? "bg-[#13283f] text-blue-400"
-                    : "text-gray-300 hover:bg-[#13283f]"
-                }
-                `
-              }
-            >
-              <Icon size={18} />
-
-              {!collapsed && (
-                <span className="text-xs lg:text-sm">{item.name}</span>
-              )}
-            </NavLink>
-          );
-        })}
-      </div>
-
-      {/* Footer */}
-
-      {!collapsed && (
-        <div className="mt-auto p-6 text-xs text-gray-400 border-t border-slate-700">
-          © 2020 Vasantha Metal Industry
-        </div>
-      )}
-    </div>
+    </>
   );
 }
